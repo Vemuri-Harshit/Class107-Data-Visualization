@@ -1,0 +1,11 @@
+import pandas as pd;
+import csv;
+import plotly.graph_objects as px;
+
+df = pd.read_csv('marks.csv');
+
+student_data = df.loc[df['student_id'] == 'TRL_xsl' ]
+
+
+graph = px.Figure(px.Bar(x = student_data.groupby('level')['attempt'].mean(), y = ['level 1','level 2','level 3','level 4'], orientation = 'h'));
+graph.show()
